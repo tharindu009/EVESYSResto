@@ -12,7 +12,7 @@ const Header = () => {
 
             <div className='flex items-center gap-2 space-x-2'>
                 <IoRestaurant className='text-white text-2xl' />
-                <img src={logo} alt="Logo" className='h-10 w-10' />
+                <img src={logo} alt="Logo" className='h-10 w-20' />
                 <h1 className='text-lg font-semibold text-white'>EVESYS Resto</h1>
             </div>
 

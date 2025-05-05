@@ -1,8 +1,11 @@
 import React from 'react'
+import Navbar from '../components/Navbar'
 
 const Orders = () => {
     return (
-        <div>Orders</div>
+        <section className='bg-sky-700 overflow-hidden flex gap-3 overflow-scroll h-[calc(150vh-5rem)]>
+            <Navbar />
+        </section>
     )
 }
 

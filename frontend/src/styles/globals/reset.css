@@ -60,7 +60,7 @@ a:not([class]) {
 }
 
 a {
-  color: currentColor;
+  /* color: currentColor; */
   text-decoration: none;
 }
 
@@ -69,7 +69,7 @@ img,
 picture {
   max-width: 100%;
   display: block;
-  height: auto;
+  /* height: auto; */
 }
 
 input,
