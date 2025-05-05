@@ -7,6 +7,7 @@ import Home from './pages/Home'
 import Login from './pages/Login'
 import Orders from './pages/Orders'
 import Header from './components/Header';
+import Tables from './pages/Tables';
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/orders" element={<Orders />} />
+        <Route path="/tables" element={<Tables />} />
       </Routes>
     </>
   )

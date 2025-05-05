@@ -22,7 +22,7 @@ const Orders = () => {
                     <button onClick={() => setStatus("completed")} className={`text-lg ${status === "completed" && "bg-sky-800 rounded-lg px-4 py-2 text-white"} text-gray-400 rounded-lg px-4 py-2 font-semibold cursor-pointer`}>Completed</button>
                 </div>
             </div>
-            <div className='flex flex-wrap gap-6 items-center justify-center px-6 py-2 overfflow-y-scroll scrollbar-hide h-[calc(100vh-5rem-5rem)]'>
+            <div className='flex flex-wrap gap-6 items-center justify-center px-6 py-2 overflow-y-scroll scrollbar-hide h-[calc(100vh-5rem-5rem)]'>
                 <OrderCard />
                 <OrderCard />
                 <OrderCard />
