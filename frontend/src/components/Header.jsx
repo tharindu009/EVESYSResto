@@ -25,7 +25,7 @@ const Header = () => {
 
             {/* User Profile */}
             <div className='flex items-center gap-4'>
-                <div className='bg-sky-700 rounded-[15px] p-3 cursor-pointer'>
+                <div className='bg-sky-700 hover:bg-sky-900 rounded-[15px] p-3 cursor-pointer'>
                     <FaBell className='text-white text-2xl' />
                 </div>
                 <div className='flex items-center gap-3 cursor-pointer'>

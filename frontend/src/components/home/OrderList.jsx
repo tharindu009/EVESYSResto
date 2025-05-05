@@ -14,8 +14,8 @@ const OrderList = () => {
                 <div>
                     <h1 className='text-yellow-500 font-semibold border border-yellow-500 rounded-lg p-1'>Table No: 3</h1>
                 </div>
-                <div className='flex flex-col items-start gpa-1'>
-                    <p className='text-green-600 px-4'><FaCheck className='inline mr-2' />Ready</p>
+                <div className='flex flex-col items-end gpa-1'>
+                    <p className='text-green-600'><FaCheck className='inline mr-2' />Ready</p>
                     <p className='text-gray-400 text-sm'><FaCircle className='inline mr-2 text-green-600' />Ready to serve</p>
                 </div>
             </div>

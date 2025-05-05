@@ -17,7 +17,7 @@ const Navbar = () => {
             <button onClick={() => navigate("/tables")} className='text-gray-400 w-[200px] cursor-pointer'><MdOutlineTableBar className="inline mr-2" size={20} />Tables</button>
             <button className='text-gray-400 w-[200px] cursor-pointer'><CiCircleMore className="inline mr-2" size={20} />More</button>
 
-            <button className='absolute bottom-6 bg-yellow-600 text-white rounded-full p-3 items-center cursor-pointer'><BiSolidDish size={30} /></button>
+            <button className='absolute bottom-6 bg-yellow-600 hover:bg-yellow-800 text-white rounded-full p-3 items-center cursor-pointer'><BiSolidDish size={30} /></button>
         </div>
     )
 }
