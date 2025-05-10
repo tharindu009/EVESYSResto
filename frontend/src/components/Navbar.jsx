@@ -45,10 +45,10 @@ const Navbar = () => {
 
     return (
         <div className='fixed bottom-0 left-0 right-0 bg-sky-800 p-2 h-16 flex justify-around'>
-            <button onClick={() => navigate("/")} className={`${page === "home" ? "text-gray-200 bg-sky-700 rounded-[20px]" : "text-gray-400"} cursor-pointer w-[200px]`}><FaHome className="inline mr-2" size={20} />Home</button>
-            <button onClick={() => navigate("/orders")} className={`${page === "orders" ? "text-gray-200 bg-sky-700 rounded-[20px]" : "text-gray-400"} cursor-pointer w-[200px]`}><MdOutlineReorder className="inline mr-2" size={20} />Orders</button>
-            <button onClick={() => navigate("/tables")} className={`${page === "tables" ? "text-gray-200 bg-sky-700 rounded-[20px]" : "text-gray-400"} cursor-pointer w-[200px]`}><MdOutlineTableBar className="inline mr-2" size={20} />Tables</button>
-            <button onClick={() => navigate("/more")} className={`${page === "more" ? "text-gray-200 bg-sky-700 rounded-[20px]" : "text-gray-400"} cursor-pointer w-[200px]`}><CiCircleMore className="inline mr-2" size={20} />More</button>
+            <button onClick={() => navigate("/")} className={`${page === "home" ? "text-gray-200 bg-sky-700 rounded-[20px]" : "text-gray-400"} cursor-pointer w-[200px] hover:text-gray-200`}><FaHome className="inline mr-2" size={20} />Home</button>
+            <button onClick={() => navigate("/orders")} className={`${page === "orders" ? "text-gray-200 bg-sky-700 rounded-[20px]" : "text-gray-400"} cursor-pointer w-[200px] hover:text-gray-200`}><MdOutlineReorder className="inline mr-2" size={20} />Orders</button>
+            <button onClick={() => navigate("/tables")} className={`${page === "tables" ? "text-gray-200 bg-sky-700 rounded-[20px]" : "text-gray-400"} cursor-pointer w-[200px] hover:text-gray-200`}><MdOutlineTableBar className="inline mr-2" size={20} />Tables</button>
+            <button onClick={() => navigate("/more")} className={`${page === "more" ? "text-gray-200 bg-sky-700 rounded-[20px]" : "text-gray-400"} cursor-pointer w-[200px] hover:text-gray-200`}><CiCircleMore className="inline mr-2" size={20} />More</button>
 
             <button onClick={openModel} className='absolute bottom-6 bg-yellow-600 hover:bg-yellow-800 text-white rounded-full p-3 items-center cursor-pointer'>
                 <BiSolidDish size={30} />

@@ -8,6 +8,7 @@ import Login from './pages/Login'
 import Orders from './pages/Orders'
 import Header from './components/Header';
 import Tables from './pages/Tables';
+import Menu from './pages/Menu';
 
 function App() {
 
@@ -19,6 +20,8 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/orders" element={<Orders />} />
         <Route path="/tables" element={<Tables />} />
+        <Route path="/menu" element={<Menu />} />
+        <Route path="*" element={<div>404 Not Found</div>} />
       </Routes>
     </>
   )
