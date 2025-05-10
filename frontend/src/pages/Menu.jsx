@@ -4,6 +4,10 @@ import BackButton from '../components/orders/BackButton'
 import { MdRestaurantMenu } from "react-icons/md";
 import MenuContainer from '../components/menu/MenuContainer';
 
+import CustomerInfo from '../components/menu/CustomerInfo';
+import CartItems from '../components/menu/CartItems';
+import BillInfo from '../components/menu/BillInfo';
+
 const Menu = () => {
     return (
         <section className='bg-sky-700 overflow-hidden flex gap-3 overflow-scroll h-[calc(150vh-5rem)]'>
@@ -34,8 +38,18 @@ const Menu = () => {
             </div>
 
             {/* Right Div */}
-            <div className='flex-[1] bg-sky-900'>
 
+            <div className='flex-[1] bg-sky-900'>
+                {/* Customer Info */}
+                <CustomerInfo />
+                <hr className="border-sky-700 border-t-2" />
+
+                {/* Cart Items */}
+                <CartItems />
+                <hr className="border-sky-700 border-t-2" />
+
+                {/* Bills */}
+                <BillInfo />
             </div>
 
 
