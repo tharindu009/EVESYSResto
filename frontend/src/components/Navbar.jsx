@@ -6,12 +6,16 @@ import { CiCircleMore } from "react-icons/ci";
 import { BiSolidDish } from "react-icons/bi";
 import { useNavigate, useLocation } from 'react-router-dom';
 import Model from './Model';
+import { useDispatch } from "react-redux";
+import { setCustomer } from '../redux/slices/CustomerSlice';
 
 const Navbar = () => {
 
     const navigate = useNavigate();
     const location = useLocation();
     const [page, setPage] = useState('home');
+    const dispatch = useDispatch();
+
 
     useEffect(() => {
         const pathToPage = {
@@ -33,6 +37,8 @@ const Navbar = () => {
     }
 
     const [guestCount, setGuestCount] = useState(0);
+    const [name, setName] = useState("");
+    const [phone, setPhone] = useState("");
 
     const increment = () => {
         if (guestCount >= 6) return;
@@ -45,6 +51,13 @@ const Navbar = () => {
     }
 
     const isActive = (path) => location.pathname === path;
+
+
+    const handleCreateOrder = () => {
+        dispatch(setCustomer({ name, phone, guests: guestCount }));
+        navigate("/tables");
+    }
+
 
     return (
         <div className='fixed bottom-0 left-0 right-0 bg-sky-800 p-2 h-16 flex justify-around'>
@@ -65,13 +78,13 @@ const Navbar = () => {
                 <div>
                     <label className='block text-gray-200 mb-2 text-sm font-medium'>Customer Name</label>
                     <div className='className="flex items-center rounded-lg p-3 px-4 bg-sky-700'>
-                        <input type="text" name='' placeholder='Enter customer name' className='bg-transparent flex-1 text-white focus:outline-none' />
+                        <input value={name} onChange={(e) => setName(e.target.value)} type="text" name='' placeholder='Enter customer name' className='bg-transparent flex-1 text-white focus:outline-none' />
                     </div>
                 </div>
                 <div>
                     <label className="block text-gray-200 mb-2 mt-3 text-sm font-medium">Customer Phone</label>
                     <div className="flex items-center rounded-lg p-3 px-4 bg-sky-700">
-                        <input type="number" name="" placeholder="+1-9999999999" id="" className="bg-transparent flex-1 text-white focus:outline-none" />
+                        <input value={phone} onChange={(e) => setPhone(e.target.value)} type="number" name="" placeholder="+1-9999999999" id="" className="bg-transparent flex-1 text-white focus:outline-none" />
                     </div>
                 </div>
                 <div>
@@ -82,7 +95,7 @@ const Navbar = () => {
                         <button onClick={increment} className="text-yellow-500 text-2xl hover:text-yellow-900 cursor-pointer">&#43;</button>
                     </div>
                 </div>
-                <button onClick={() => navigate("/tables")} className="w-full bg-[#F6B100] text-white rounded-lg py-3 mt-6 hover:bg-yellow-700 cursor-pointer">
+                <button onClick={handleCreateOrder} className="w-full bg-[#F6B100] text-white rounded-lg py-3 mt-6 hover:bg-yellow-700 cursor-pointer">
                     Create Order
                 </button>
             </Model>

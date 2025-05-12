@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
+    orderId: "",
     customerName: "",
     customerPhone: "",
     guets: 0,
@@ -15,6 +16,7 @@ const customerSlice = createSlice({
     reducers: {
         setCustomer: (state, action) => {
             const { name, phone, guests } = action.payload;
+            state.orderId = `${Date.now()}`;
             state.customerName = name;
             state.customerPhone = phone;
             state.guests = guests;
@@ -32,3 +34,6 @@ const customerSlice = createSlice({
         }
     }
 })
+
+export const { setCustomer, removeCustomer, updateTable } = customerSlice.actions;
+export default customerSlice.reducer;

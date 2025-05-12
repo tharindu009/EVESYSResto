@@ -7,8 +7,13 @@ import MenuContainer from '../components/menu/MenuContainer';
 import CustomerInfo from '../components/menu/CustomerInfo';
 import CartItems from '../components/menu/CartItems';
 import BillInfo from '../components/menu/BillInfo';
+import { useSelector } from 'react-redux';
 
 const Menu = () => {
+
+    const customerData = useSelector((state) => state.customer);
+
+
     return (
         <section className='bg-sky-700 overflow-hidden flex gap-3 overflow-scroll h-[calc(150vh-5rem)]'>
             {/* Left Div */}
@@ -24,10 +29,10 @@ const Menu = () => {
                                 <MdRestaurantMenu className="text-white text-4xl" />
                                 <div className="flex flex-col items-start">
                                     <h1 className="text-md text-[#f5f5f5] font-semibold tracking-wide">
-                                        Customer Name
+                                        {customerData.customerName ? customerData.customerName : "Customer Name"}
                                     </h1>
                                     <p className="text-xs text-[#ababab] font-medium">
-                                        Table : No
+                                        {customerData.table ? customerData.table : "Table ID"}
                                     </p>
                                 </div>
                             </div>
