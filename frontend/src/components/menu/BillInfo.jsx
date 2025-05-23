@@ -1,9 +1,18 @@
 import React, { useState } from 'react'
+import { useSelector } from 'react-redux';
+import { getTotalPrice } from '../../redux/slices/cartSlice';
 
 const BillInfo = () => {
 
 
     const [paymentMethod, setPaymentMethod] = useState("Cash");
+
+    const total = useSelector(getTotalPrice);
+    const taxRate = parseFloat(import.meta.env.VITE_TAX_AMOUNT || 0); // Default to 0 if not defined
+    const tax = (total * taxRate) / 100;
+    const currancy = import.meta.env.VITE_CURRENCY || "$"; // Default to $ if not defined
+
+    const cartData = useSelector((state) => state.cart);
 
     return (
         <>
@@ -12,7 +21,7 @@ const BillInfo = () => {
                 <h1 className='text-white text-md font-bold'>$124.54</h1>
             </div>
             <div className='flex items-center justify-between px-5 mt-2'>
-                <p className='text-xs text-gray-400 font-medium mt-2'>Tax(6.0%))</p>
+                <p className='text-xs text-gray-400 font-medium mt-2'>Tax(6.0%)</p>
                 <h1 className='text-white text-md font-bold'>$2.34</h1>
             </div>
             <div className="flex items-center justify-between px-5 mt-2">
