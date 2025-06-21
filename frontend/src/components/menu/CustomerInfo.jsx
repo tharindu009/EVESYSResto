@@ -11,7 +11,7 @@ const CustomerInfo = () => {
     return (
         <div className='flex items-center justify-between px-4 py-3'>
             <div className='flex flex-col items-start'>
-                <h1 className='text-md text-white font-semibold tracking-wide'>{customerData.customerName || "Customer Name"}</h1>
+                <h1 className='text-md text-white font-semibold tracking-wide pb-2'>{customerData.customerName || "Customer Name"}</h1>
                 <p className='text-xs text-gray-400 font-medium mt-1'>#{customerData.orderId || "N/A"} - Dine In</p>
                 <p className='text-xs text-gray-400 font-medium mt-2'>
                     {formatDate(dateTime)}

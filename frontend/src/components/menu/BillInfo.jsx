@@ -11,25 +11,26 @@ const BillInfo = () => {
     const taxRate = parseFloat(import.meta.env.VITE_TAX_AMOUNT || 0); // Default to 0 if not defined
     const tax = (total * taxRate) / 100;
     const currancy = import.meta.env.VITE_CURRENCY || "$"; // Default to $ if not defined
+    const totalPrice = total + tax;
 
     const cartData = useSelector((state) => state.cart);
 
     return (
         <>
             <div className='flex items-center justify-between px-5 mt-2'>
-                <p className='text-xs text-gray-400 font-medium mt-2'>Items(4)</p>
-                <h1 className='text-white text-md font-bold'>$124.54</h1>
+                <p className='text-xs text-gray-400 font-medium mt-2'>Items({cartData.length})</p>
+                <h1 className='text-white text-md font-bold'>{currancy}{total.toFixed(2)}</h1>
             </div>
             <div className='flex items-center justify-between px-5 mt-2'>
                 <p className='text-xs text-gray-400 font-medium mt-2'>Tax(6.0%)</p>
-                <h1 className='text-white text-md font-bold'>$2.34</h1>
+                <h1 className='text-white text-md font-bold'>{currancy}{tax.toFixed(2)}</h1>
             </div>
             <div className="flex items-center justify-between px-5 mt-2">
                 <p className="text-xs text-[#ababab] font-medium mt-2">
                     Total Payable
                 </p>
                 <h1 className="text-[#f5f5f5] text-md font-bold">
-                    $126.88
+                    {currancy}{totalPrice.toFixed(2)}
                 </h1>
             </div>
             <div className="flex items-center gap-3 px-5 mt-4">
