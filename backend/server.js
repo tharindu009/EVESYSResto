@@ -3,21 +3,19 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import 'dotenv/config';
 import connectDB from './config/mongodb.js';
+import config from './config/config.js';
+import globalErrorHandler from './middleware/globalErrorHandler.js';
+import createHttpError from 'http-errors';
 
 // App config
 const app = express();
-const port = process.env.PORT || 4000;
+const port = config.PORT || 4000;
 connectDB();
 
 
 // middlewares
 app.use(express.json());
-const allowedOrigins = [
-    'http://localhost:5173',
-    'http://localhost:5174',
-    'http://localhost:3000',
-    'http://localhost:4000'
-];
+const allowedOrigins = config.CORS_ALLOWED_ORIGINS;
 app.use(cors({
     origin: function (origin, callback) {
         if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
@@ -37,6 +35,10 @@ app.use(cors({
 app.get("/", (req, res) => {
     res.send("EVERESTO API Working")
 });
+
+
+//Error handling middleware
+app.use(globalErrorHandler);
 
 
 app.listen(port, () => console.log(`Server started on PORT:${port}`));
