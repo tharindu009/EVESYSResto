@@ -13,8 +13,8 @@ const orderSchema = new mongoose.Schema({
         tax: { type: Number, required: true },
         totalPayable: { type: Number, required: true }
     },
-    items: []
-
+    items: [],
+    table: { type: mongoose.Schema.Types.ObjectId, ref: "table" }
 }, { timestamps: true });
 
 

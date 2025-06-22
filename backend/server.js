@@ -8,6 +8,7 @@ import globalErrorHandler from './middleware/globalErrorHandler.js';
 import createHttpError from 'http-errors';
 import userRouter from './routes/userRoute.js';
 import orderRouter from './routes/orderRoute.js';
+import tableRoute from './routes/tableRoute.js';
 
 // App config
 const app = express();
@@ -17,23 +18,24 @@ connectDB();
 
 // middlewares
 app.use(express.json());
-// const allowedOrigins = config.CORS_ALLOWED_ORIGINS;
-// app.use(cors({
-//     origin: function (origin, callback) {
-//         if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
-//             callback(null, true);
-//         } else {
-//             callback(new Error('Not allowed by CORS'));
-//         }
-//     },
-//     credentials: true,
-//     optionsSuccessStatus: 200
-// }));
+const allowedOrigins = config.CORS_ALLOWED_ORIGINS;
+app.use(cors({
+    origin: function (origin, callback) {
+        if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
+    credentials: true,
+    optionsSuccessStatus: 200
+}));
 
 
 //API endpoints
 app.use("/api/user", userRouter);
 app.use("/api/order", orderRouter);
+app.use("/api/table", tableRoute);
 
 
 //-----
