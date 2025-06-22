@@ -6,6 +6,7 @@ import connectDB from './config/mongodb.js';
 import config from './config/config.js';
 import globalErrorHandler from './middleware/globalErrorHandler.js';
 import createHttpError from 'http-errors';
+import userRouter from './routes/userRoute.js';
 
 // App config
 const app = express();
@@ -15,20 +16,22 @@ connectDB();
 
 // middlewares
 app.use(express.json());
-const allowedOrigins = config.CORS_ALLOWED_ORIGINS;
-app.use(cors({
-    origin: function (origin, callback) {
-        if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
-            callback(null, true);
-        } else {
-            callback(new Error('Not allowed by CORS'));
-        }
-    },
-    credentials: true,
-    optionsSuccessStatus: 200
-}));
+// const allowedOrigins = config.CORS_ALLOWED_ORIGINS;
+// app.use(cors({
+//     origin: function (origin, callback) {
+//         if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+//             callback(null, true);
+//         } else {
+//             callback(new Error('Not allowed by CORS'));
+//         }
+//     },
+//     credentials: true,
+//     optionsSuccessStatus: 200
+// }));
 
 
+//API endpoints
+app.use("/api/user", userRouter);
 
 
 //-----
