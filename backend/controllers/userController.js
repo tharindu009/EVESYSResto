@@ -44,8 +44,29 @@ const registerUser = async (req, res, next) => {
 
 const loginUser = async (req, res, next) => {
     try {
+        const { email, password } = req.body;
+        const user = await userModel.findOne({ email });
 
-    } catch (error) {
+        //checking if the request body is empty
+        if (!user) {
+            const error = createHttpError(400, "Invalid email or password");
+            return next(error);
+        }
+
+        const isMatch = await bycrypt.compare(password, user.password);
+
+        if (isMatch) {
+            const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
+            res.json({ success: true, token: token, user: { id: user._id, name: user.name, email: user.email } });
+        }
+        else {
+            const error = createHttpError(400, "Invalid email or password")
+            return next(error);
+        }
+
+    }
+    catch (error) {
+        console.log(error.message);
         next(error);
     }
 }
