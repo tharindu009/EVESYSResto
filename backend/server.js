@@ -7,6 +7,7 @@ import config from './config/config.js';
 import globalErrorHandler from './middleware/globalErrorHandler.js';
 import createHttpError from 'http-errors';
 import userRouter from './routes/userRoute.js';
+import orderRouter from './routes/orderRoute.js';
 
 // App config
 const app = express();
@@ -32,6 +33,7 @@ app.use(express.json());
 
 //API endpoints
 app.use("/api/user", userRouter);
+app.use("/api/order", orderRouter);
 
 
 //-----

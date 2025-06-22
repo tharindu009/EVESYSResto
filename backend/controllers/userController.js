@@ -57,7 +57,7 @@ const loginUser = async (req, res, next) => {
 
         if (isMatch) {
             const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
-            res.json({ success: true, token: token, user: { id: user._id, name: user.name, email: user.email } });
+            res.status(201).json({ success: true, token: token, user: { id: user._id, name: user.name, email: user.email } });
         }
         else {
             const error = createHttpError(400, "Invalid email or password")
@@ -71,4 +71,20 @@ const loginUser = async (req, res, next) => {
     }
 }
 
-export { registerUser, loginUser }
+const getUserProfile = async (req, res, next) => {
+    try {
+        const { userId } = req.body;
+        const userData = await userModel.findById(userId).select("-password");
+        if (!userData) {
+            const error = createHttpError(400, "User not found");
+            return next(error);
+        }
+        res.status(201).json({ success: true, message: "Success", data: userData });
+    }
+    catch (error) {
+        console.log(error.message);
+        next(error);
+    }
+}
+
+export { registerUser, loginUser, getUserProfile }
