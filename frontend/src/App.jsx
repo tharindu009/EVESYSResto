@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import '../src/styles/globals/colors.css'
 import '../src/styles/globals/reset.css'
 import '../src/styles/globals/typography.css'
@@ -12,9 +12,12 @@ import Menu from './pages/Menu';
 
 function App() {
 
+  const location = useLocation();
+  const hideHeaderRoutes = ["/login"];
+
   return (
     <>
-      <Header />
+      {!hideHeaderRoutes.includes(location.pathname) && <Header />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
