@@ -1,6 +1,7 @@
 import React from 'react'
 import Loginimage from "../assets/images/restaurant-img.jpg"
 import logo from '../assets/images/logo.png'
+import Register from '../components/login/Register'
 
 const Login = () => {
     return (
@@ -28,9 +29,9 @@ const Login = () => {
                     <img src={logo} alt="" className='h-20 w-20 border-2 rounded-full p-1' />
                     <h1 className='text-lg font-semibold text-[#f5f5f5] tracking-wide'>EVERESTO</h1>
                 </div>
-                <h2 className='text-4xl text-center mt-10 font-semibold text-yellow-400 mb-10'>Employee Registration</h2>
+                <h2 className='text-4xl text-center mt-10 font-semibold text-yellow-400 mb-10 py-10'>Employee Registration</h2>
                 {/* components */}
-
+                <Register />
 
                 <div className='flex justify-center mt-6'>
                     <p className='text-sm text-[#ababab]'>Already have an account?
