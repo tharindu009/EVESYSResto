@@ -1,9 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Loginimage from "../assets/images/restaurant-img.jpg"
 import logo from '../assets/images/logo.png'
 import Register from '../components/login/Register'
+import SignIn from '../components/login/SignIn'
+
 
 const Login = () => {
+
+    const [isRegister, setIsRegister] = useState(false);
+
     return (
         <div className='flex min-h-screen w-full'>
             {/* Left Section */}
@@ -29,14 +34,18 @@ const Login = () => {
                     <img src={logo} alt="" className='h-20 w-20 border-2 rounded-full p-1' />
                     <h1 className='text-lg font-semibold text-[#f5f5f5] tracking-wide'>EVERESTO</h1>
                 </div>
-                <h2 className='text-4xl text-center mt-10 font-semibold text-yellow-400 mb-10 py-10'>Employee Registration</h2>
+                <h2 className='text-4xl text-center mt-10 font-semibold text-yellow-400 mb-10 py-10'>
+                    {isRegister ? "Employee Registration" : "Employee Login"}
+                </h2>
                 {/* components */}
-                <Register />
+                {isRegister ? <Register /> : <SignIn />}
 
                 <div className='flex justify-center mt-6'>
-                    <p className='text-sm text-[#ababab]'>Already have an account?
-                        <a className='text-yellow-400 font-semibold hover:text-yellow-800 ml-2' href="">
-                            Sign in
+                    <p className='text-sm text-[#ababab]'>
+                        {isRegister ? "Already have an account?" : "Don,t have an account?"}
+                        <a onClick={() => setIsRegister(!isRegister)} className='text-yellow-400 font-semibold hover:text-yellow-800 ml-2'>
+                            {isRegister ? "Sign in" : "Register"}
+
                         </a>
                     </p>
                 </div>
