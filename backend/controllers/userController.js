@@ -5,8 +5,6 @@ import jwt from 'jsonwebtoken';
 
 const registerUser = async (req, res, next) => {
     try {
-
-        console.log(req.body)
         const { name, phone, email, password, role } = req.body;
         if (!name || !email || !password) {
             const error = createHttpError(400, "All field are required");
@@ -44,11 +42,14 @@ const registerUser = async (req, res, next) => {
 
 const loginUser = async (req, res, next) => {
     try {
+        console.log("User Login Controller")
+        console.log(req.body);
         const { email, password } = req.body;
         const user = await userModel.findOne({ email });
 
         //checking if the request body is empty
         if (!user) {
+
             const error = createHttpError(400, "Invalid email or password");
             return next(error);
         }
@@ -87,4 +88,15 @@ const getUserProfile = async (req, res, next) => {
     }
 }
 
-export { registerUser, loginUser, getUserProfile }
+const getUserData = async (req, res, next) => {
+    try {
+
+        const user = await User.findById(req.user._id);
+        res.status(200).json({ success: true, data: user });
+
+    } catch (error) {
+        next(error);
+    }
+}
+
+export { registerUser, loginUser, getUserData }
